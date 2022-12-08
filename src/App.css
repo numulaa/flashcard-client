@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .App {
   text-align: center;
 }
@@ -35,4 +40,62 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* ----------- HEADER ------------- */
+.header {
+  background: rgb(204, 237, 29);
+  padding: 2rem;
+}
+.navigation,
+.navigation ul {
+  display: flex;
+  justify-content: space-between;
+}
+.navigation li {
+  list-style: none;
+}
+.navigation ul {
+  flex-basis: 10%;
+}
+
+/* --------------- CONTAINER --------------- */
+main {
+  background: rgb(204, 237, 29);
+  height: 90vh;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.deck-btn {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: rgb(111, 129, 17);
+  color: white;
+}
+.main-title {
+  font-family: "Black Han Sans", sans-serif;
+  font-size: 5rem;
+}
+.main-btn {
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(239, 249, 187);
+  border-radius: 0.5rem;
+  border: none;
+}
+
+/* ------- add card page */
+.addCard-input {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
 }
