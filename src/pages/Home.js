@@ -24,8 +24,10 @@ function Home() {
           <button className="main-btn" onClick={authModalShow}>
             {isSignUp ? "Login" : "Create Account"}
           </button>
-          {showModal && <AuthModal />}
         </div>
+        {showModal && (
+          <AuthModal setShowModal={setShowModal} isSignUp={isSignUp} />
+        )}
       </main>
     </>
   );
