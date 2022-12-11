@@ -4,6 +4,8 @@ import "../App.css";
 import Navbar from "../components/Navbar";
 import AuthModal from "../components/AuthModal";
 
+import "../styles/css/main.css";
+import "../styles/src/input.css";
 import ilustration from "../assets/ilustration.png";
 
 function Home() {
@@ -15,13 +17,18 @@ function Home() {
     console.log(showModal);
   }
   return (
-    <>
+    <div className="overlay">
       <Navbar />
-      <main>
-        <img src={ilustration}></img>
-        <div className="container">
+      <main className="bg-nctGreen flex align-center justify-center text-center h-[90vh]">
+        <div className="self-center">
+          <img src={ilustration} className="max-w-[100%]"></img>
+        </div>
+        <div className="flex flex-col align-start justify-center p-8 ">
           <h1 className="main-title">Welcome</h1>
-          <button className="main-btn" onClick={authModalShow}>
+          <button
+            className="py-2 px-6 bg-nctLightYellowGreen rounded-md"
+            onClick={authModalShow}
+          >
             {isSignUp ? "Login" : "Create Account"}
           </button>
         </div>
@@ -29,7 +36,7 @@ function Home() {
           <AuthModal setShowModal={setShowModal} isSignUp={isSignUp} />
         )}
       </main>
-    </>
+    </div>
   );
 }
 

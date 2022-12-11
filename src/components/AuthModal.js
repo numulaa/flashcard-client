@@ -29,17 +29,24 @@ export default function AuthModal({ setShowModal, isSignUp }) {
   }
 
   return (
-    <div className="authModal">
-      <div className="x-btn" onClick={closeAuth}>
+    <div className="absolute left-0 right-0 ml-auto mr-auto max-w-2xl h-xl px-20 py-16 bg-nctLightYellowGreen rounded-2xl ">
+      <div
+        className="absolute right-8 top-8 cursor-pointer"
+        onClick={closeAuth}
+      >
         X
       </div>
-      <form className="authModal-form" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col justify-between gap-2"
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           placeholder="First Name"
           onChange={handleChange}
           name="firstName"
           value={authFormData.firstName}
+          className="rounded-md p-3 border-solid border-2 border-gray"
         ></input>
         <input
           type="text"
@@ -47,6 +54,7 @@ export default function AuthModal({ setShowModal, isSignUp }) {
           onChange={handleChange}
           name="lasttName"
           value={authFormData.lastName}
+          className="rounded-md p-3 border-solid border-2 border-gray"
         ></input>
         <input
           type="email"
@@ -54,6 +62,7 @@ export default function AuthModal({ setShowModal, isSignUp }) {
           onChange={handleChange}
           name="email"
           value={authFormData.email}
+          className="rounded-md p-3 border-solid border-2 border-gray"
         ></input>
         <input
           type="text"
@@ -61,6 +70,7 @@ export default function AuthModal({ setShowModal, isSignUp }) {
           onChange={handleChange}
           name="password"
           value={authFormData.password}
+          className="rounded-md p-3 border-solid border-2 border-gray"
         ></input>
         {!isSignUp && (
           <input
@@ -69,9 +79,10 @@ export default function AuthModal({ setShowModal, isSignUp }) {
             onChange={handleChange}
             name="confirmPassword"
             value={authFormData.confirmPassword}
+            className="rounded-md p-3 border-solid border-2 border-gray"
           ></input>
         )}
-        <button className="submit-btn">
+        <button className="p-3 rounded-md text-nctWhite bg-nctGreen cursor-pointer mt-4">
           {isSignUp ? "Sign In" : "Create Account"}
         </button>
       </form>

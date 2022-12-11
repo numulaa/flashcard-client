@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import "../App.css";
 import Navbar from "../components/Navbar";
+import "../styles/css/main.css";
+import "../styles/src/input.css";
 
 export default function NewCardForm() {
   const [addCardForm, setAddCardForm] = useState({
@@ -20,7 +22,7 @@ export default function NewCardForm() {
   return (
     <>
       <Navbar />
-      <form className="addCard-input">
+      <form className="flex flex-col gap-8 align-center">
         <textarea
           name="question"
           placeholder="Question"
