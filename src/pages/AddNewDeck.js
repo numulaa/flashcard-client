@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import NewDeckModal from "../components/NewDeckModal";
+import Decks from "../components/Decks";
+
 import "../styles/css/main.css";
 import "../styles/src/input.css";
 
 function AddNewDeck() {
+  const [newDeckFormData, setNewDeckFormData] = useState({
+    deckTitle: "",
+    deckShortDesc: "",
+  });
   const [showNewDeckFormModal, setShowNewDeckFormModal] = useState(false);
   function openNewDeckForm() {
     setShowNewDeckFormModal(true);
   }
+  const allDecks = [newDeckFormData].map((deck) => (
+    <Decks key={deck.id} deck={deck} />
+  ));
+
   return (
     <>
       <Navbar />
@@ -20,8 +30,13 @@ function AddNewDeck() {
           + Create Deck
         </button>
         {showNewDeckFormModal && (
-          <NewDeckModal setShowNewDeckFormModal={setShowNewDeckFormModal} />
+          <NewDeckModal
+            setShowNewDeckFormModal={setShowNewDeckFormModal}
+            newDeckFormData={newDeckFormData}
+            setNewDeckFormData={setNewDeckFormData}
+          />
         )}
+        <div className="flex flex-wrap mt-6">{allDecks}</div>
       </main>
     </>
   );

@@ -1,20 +1,22 @@
 import React, { useState } from "react";
+import Decks from "./Decks";
 
 import "../App.css";
-export default function NewDeckModal({ setShowNewDeckFormModal }) {
-  const [newDeckFormData, setNewDeckFormData] = useState({
-    deckTitle: "",
-    deckShortDesc: "",
-  });
+export default function NewDeckModal(
+  { setShowNewDeckFormModal, setNewDeckFormData },
+  newDeckFormData
+) {
   function handleChange(e) {
-    const [name, value] = e.target;
-    setNewDeckFormData(() => ({
+    const { name, value } = e.target;
+    setNewDeckFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
     }));
   }
   function closeNewDeckModal() {
     setShowNewDeckFormModal(false);
   }
+
   function handleSubmit(e) {
     e.preventDefault();
     console.log("new deck created");
@@ -40,13 +42,13 @@ export default function NewDeckModal({ setShowNewDeckFormModal }) {
           value={newDeckFormData.deckTitle}
           className="rounded-md p-3 border-solid border-2 border-gray"
         ></input>
-        <label htmlFor="deckTitle">Short Description</label>
+        <label htmlFor="deckShortDesc">Short Description</label>
         <textarea
           type="text"
           placeholder="Short description about the deck"
           onChange={handleChange}
-          name="deckTitle"
-          value={newDeckFormData.deckTitle}
+          name="deckShortDesc"
+          value={newDeckFormData.deckShortDesc}
           className="rounded-md p-3 border-solid border-2 border-gray"
         />
 

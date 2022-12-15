@@ -14,8 +14,8 @@ root.render(
   <React.StrictMode>
     {/* <Home /> */}
     {/* <App /> */}
-    <AddNewDeck />
-    {/* <NewCardForm /> */}
+    {/* <AddNewDeck /> */}
+    <NewCardForm />
   </React.StrictMode>
 );
 
