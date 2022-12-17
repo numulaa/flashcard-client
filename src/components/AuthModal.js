@@ -1,9 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
+import axios from "axios";
 
 export default function AuthModal({ setShowModal, isSignUp }) {
+  const navigate = useNavigate();
   const [authFormData, setAuthFormData] = useState({
+    userName: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -23,8 +27,19 @@ export default function AuthModal({ setShowModal, isSignUp }) {
   function closeAuth() {
     setShowModal(false);
   }
-  function handleSubmit(e) {
+
+  async function handleSubmit(e) {
     e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:8000/signup", {
+        authFormData,
+      });
+      console.log(res);
+      const success = res.status === 200;
+      if (success) navigate("/addNewDeck");
+    } catch (err) {
+      console.log(err);
+    }
     console.log("submit");
   }
 
@@ -42,6 +57,14 @@ export default function AuthModal({ setShowModal, isSignUp }) {
       >
         <input
           type="text"
+          placeholder="Username"
+          onChange={handleChange}
+          name="userName"
+          value={authFormData.userName}
+          className="rounded-md p-3 border-solid border-2 border-gray"
+        ></input>
+        <input
+          type="text"
           placeholder="First Name"
           onChange={handleChange}
           name="firstName"
@@ -52,7 +75,7 @@ export default function AuthModal({ setShowModal, isSignUp }) {
           type="text"
           placeholder="Last Name"
           onChange={handleChange}
-          name="lasttName"
+          name="lastName"
           value={authFormData.lastName}
           className="rounded-md p-3 border-solid border-2 border-gray"
         ></input>
